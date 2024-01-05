@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_zones_tree" model="ir.ui.view">
+        <field name="name">zone.tree</field>
+        <field name="model">res.zone</field>
+        <field name="arch" type="xml">
+            <!-- Liste des Zones -->
+            <tree>
+                <field name="name"/>
+                <field name="label"/>    <!-- label du Farm "compute"-->
+                <field name="farm_name"/>
+                <field name="N_sensors"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_zones_form" model="ir.ui.view">
+        <field name="name">zone.form</field>
+        <field name="model">res.zone</field>
+        <field name="arch" type="xml">
+            <!-- Creation d'une Zone -->
+            <form>
+            <style> .btn-primary:nth-child(2){ display:none !important; }</style>
+                <sheet>
+                <group>
+                    <field name="farm" options="{'no_create': True, 'no_create_edit':True}" />    <!-- Nome du Farm "Selection" -->   
+                    <field name="label"/>    <!-- label du Farm "compute"-->
+                    <field name="name"/>     <!-- Nome du Zone "compute" -->
+                </group>
+
+                <notebook>
+                    <page string="Sensors" name="sensors_page">
+                        <field name="sensors" widget="one2many_list" options="{'editable': true}">
+                            <!-- Liste des Capteurs -->
+                            <tree>
+                                <field name="name"/>
+                                <field name="zone_name"/>
+                                <field name="farm_name"/>
+                                <field name="DID"/>
+                            </tree>
+                            <!-- Creation d'un Capteur -->
+                            <form>
+                                <sheet>
+                                <group>
+                                     
+                                    <field name="name"/>        <!-- Type du capture "Selection"-->
+                                    <field name="zone_name"/>   <!-- Nome de la zone "compute"-->
+                                    <field name="farm_name"/>   <!-- Nome du farm "compute"-->
+                                    <!-- <field name="DID"/>       ID du capture -->
+                                </group>
+                            </sheet>
+                            </form>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="menu_action_zones" model="ir.actions.act_window">
+        <field name="name">Zones </field>
+        <field name="res_model">res.zone</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="view_zones_tree"/>
+    </record>
+    
+
+
+
+    <menuitem id="menu_zone"
+    name="Zones"
+    parent="menu_bcs_root"
+    action="menu_action_zones"
+    />
+
+
+</odoo>

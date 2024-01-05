@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="layouts" name="Custom home">
+
+        <html lang="en" dir="ltr">
+            <head>
+                <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+                <!-- Perfect Scrollbar -->
+                <link type="text/css"
+                    href="/WSC/static/assets/vendor/perfect-scrollbar.css"
+                    rel="stylesheet" />
+                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                <!-- Material Design Icons -->
+                <link type="text/css"
+                    href="/WSC/static/assets/css/material-icons.css"
+                    rel="stylesheet" />
+
+                <!-- Font Awesome Icons -->
+                <link type="text/css"
+                    href="/WSC/static/assets/css/fontawesome.css"
+                    rel="stylesheet" />
+
+                <!-- Preloader -->
+                <link type="text/css"
+                    href="/WSC/static/assets/vendor/spinkit.css"
+                    rel="stylesheet" />
+                <link type="text/css"
+                    href="/WSC/static/assets/css/preloader.css"
+                    rel="stylesheet" />
+
+                <!-- App CSS -->
+                <link type="text/css"
+                    href="/WSC/static/assets/css/app.css"
+                    rel="stylesheet" />
+
+                <!-- Dark Mode CSS (optional) -->
+                <link type="text/css"
+                    href="/WSC/static/assets/css/dark-mode.css"
+                    rel="stylesheet" />
+
+                <link
+                    href="https://fonts.googleapis.com/css?family=Lato:400,700%7COswald:300,400,500,700%7CRoboto:400,500%7CExo+2:600&amp;display=swap"
+                    rel="stylesheet" />
+                <style>
+                    body {
+                    overflow: hidden;
+                    }
+                    .canvasjs-chart-credit{
+                    visibility: hidden;
+                    }
+                    .mdk-drawer-layout__content {
+                    overflow-y: auto; /* Ajoute la barre de défilement verticale uniquement
+                    lorsque nécessaire */
+                    max-height: 100%; /* Définissez une hauteur maximale pour la zone de
+                    défilement */
+                    }
+                </style>
+
+                <script type="text/javascript" src="/WSC/static/src/js/22T_char.js"></script>
+
+            </head>
+
+
+            <body class="layout-app layout-sticky-subnav">
+
+                <div class="preloader">
+                    <div class="sk-chase">
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                    </div>
+
+                </div>
+
+                <div class="mdk-drawer-layout js-mdk-drawer-layout" data-responsive-width="992px">
+                    <!-- // END drawer-layout__content -->
+                    <div class="mdk-drawer-layout__content page-content"
+                        style="transform: translate3d(0px, 0px, 0px);">
+                        <!-- Header -->
+                        <div
+                            class="navbar navbar-expand navbar-shadow px-0 pl-lg-16pt navbar-light bg-body"
+                            id="default-navbar" data-primary="">
+
+                            <!-- Navbar toggler -->
+                            <button class="navbar-toggler d-block d-lg-none rounded-0" type="button"
+                                data-toggle="sidebar">
+                                <span class="material-icons">menu</span>
+                            </button>
+
+                            <!-- Navbar Brand -->
+                            <a href="#" class="navbar-brand mr-16pt d-lg-none rounded-circle">
+                                <img class="navbar-brand-icon mr-0 mr-lg-8pt" width="32" height="32"
+                                    t-attf-src="/web/image?model=res.users&amp;id={{ user.id }}&amp;field=avatar_128&amp;"
+                                    alt="BCS"> </img>
+                            </a>
+                            <div class="flex"></div>
+
+                            <div class="nav navbar-nav flex-nowrap d-flex ml-0 mr-16pt">
+                                <div class="nav-item dropdown d-none d-sm-flex">
+                                    <a href="#"
+                                        class="nav-link d-flex align-items-center dropdown-toggle"
+                                        data-toggle="dropdown">
+
+                                        <img width="32" height="32" class="rounded-circle mr-8pt"
+                                            t-attf-src="/web/image?model=res.users&amp;id={{ user.id }}&amp;field=avatar_128&amp;"
+                                            t-attf-alt="Photo de {{ user.name }}" />
+                                        <span class="flex d-flex flex-column mr-8pt">
+                                            <span class="navbar-text-100">
+                                                <t t-esc="user.name" />
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <div class="dropdown-header">
+                                            <strong>Account</strong>
+                                        </div>
+                                        <a class="dropdown-item" id="edithref">Edit Account</a>
+                                        <a class="dropdown-item" href="/web/session/logout">Logout</a>
+                                    </div>
+                                </div>
+
+                                <!-- Notifications dropdown -->
+                                <div class="nav-item ml-16pt dropdown dropdown-notifications">
+                                    <button class="nav-link btn-flush dropdown-toggle" type="button"
+                                        data-toggle="dropdown"
+                                        data-dropdown-disable-document-scroll="" data-caret="false">
+                                        <i class="material-icons">notifications</i>
+                                        <span
+                                            class="badge badge-notifications badge-accent-dodger-blue">
+                                            2</span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <div data-perfect-scrollbar="" class="position-relative ps">
+                                            <div class="dropdown-header">
+                                                <strong>System notifications</strong>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- // END Notifications dropdown -->
+
+                                <!-- Notifications dropdown -->
+                                <div class="nav-item ml-16pt dropdown dropdown-notifications">
+                                    <button class="nav-link btn-flush dropdown-toggle" type="button"
+                                        data-toggle="dropdown"
+                                        data-dropdown-disable-document-scroll="" data-caret="false">
+                                        <i class="material-icons icon-24pt">mail_outline</i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <div data-perfect-scrollbar="" class="position-relative ps">
+                                            <div class="dropdown-header">
+                                                <strong>Messages</strong>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- // END Notifications dropdown -->
+                            </div>
+
+
+                        </div>
+                        <!-- // END Header -->
+                        <!-- contente body -->
+                        <div style="min-height: ;">
+                            <!-- // Titel -->
+                            <div class="border-bottom-2 py-32pt position-relative z" id="headTitel2">
+                                <div
+                                    class="container-fluid page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+                                    <div
+                                        class="flex d-flex flex-column flex-sm-row align-items-center">
+
+                                        <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+                                            <h2 class="mb-0">Account</h2>
+                                            <ol class="breadcrumb p-0 m-0">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.html">Home</a>
+                                                </li>
+                                                <li class="breadcrumb-item">
+                                                    <a href="#">Account</a>
+                                                </li>
+                                                <li class="breadcrumb-item active">
+                                                    Edit Account
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-bottom-2 py-32pt position-relative z" id="headTitel">
+                                <div
+                                    class="container-fluid page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+                                    <div
+                                        class="flex d-flex flex-column flex-sm-row align-items-center">
+
+                                        <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+                                            <h2 class="mb-0">Charts</h2>
+                                            <ol class="breadcrumb p-0 m-0">
+                                                <li class="breadcrumb-item" id="label_farm">
+
+                                                </li>
+                                                <li class="breadcrumb-item" id="label_zone">
+
+                                                </li>
+                                                <li class="breadcrumb-item active" id="grendeur">
+
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div id="alerdedit" class="alert alert-success" role="alert"
+                                        style="display: none;">
+                                        <t t-esc="message" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- // Edite section -->
+                            <div class="container-fluid page__container" id="sectien_edite"
+                                style="display: none;">
+                                <form action="/edit_info" method="post">
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()" />
+                                    <input type="hidden" name="id"
+                                        t-attf-value="{{user.id}}" />
+                                    <div class="row">
+                                        <div class="col-lg-9 pr-lg-0">
+
+                                            <div class="page-section" id="section_edit_info">
+                                                <h4>Basic Information</h4>
+                                                <div class="list-group list-group-form">
+                                                    <div class="list-group-item">
+                                                        <div
+                                                            class="form-group row align-items-center mb-0">
+                                                            <label
+                                                                class="col-form-label form-label col-sm-3">Your
+                                                                photo</label>
+                                                            <div
+                                                                class="col-sm-9 media align-items-center">
+                                                                <a href="#"
+                                                                    class="media-left mr-16pt">
+                                                                    <img
+                                                                        t-attf-src="/web/image?model=res.users&amp;id={{ user.id }}&amp;field=avatar_128&amp;"
+                                                                        alt="imge" width="56"
+                                                                        class="rounded-circle" />
+                                                                </a>
+                                                                <div class="media-body">
+                                                                    <div class="custom-file">
+                                                                        <input type="file"
+                                                                            class="custom-file-input"
+                                                                            name="image"
+                                                                            id="inputGroupFile01" />
+                                                                        <label
+                                                                            class="custom-file-label"
+                                                                            for="inputGroupFile01">Choose
+                                                                            file</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="list-group-item">
+                                                        <div
+                                                            class="form-group row align-items-center mb-0">
+                                                            <label
+                                                                class="form-label col-form-label col-sm-3">First
+                                                                name</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text"
+                                                                    class="form-control"
+                                                                    name="first_name"
+                                                                    t-attf-value="{{user.name}}"
+                                                                    placeholder="Your first name ..." />
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="list-group-item">
+                                                        <div
+                                                            class="form-group row align-items-center mb-0">
+                                                            <label
+                                                                class="form-label col-form-label col-sm-3">Last
+                                                                name</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text"
+                                                                    class="form-control"
+                                                                    name="last_name"
+                                                                    t-attf-value="{{user.name}}"
+                                                                    placeholder="Your last name ..." />
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="list-group-item">
+                                                        <div
+                                                            class="form-group row align-items-center mb-0">
+                                                            <label
+                                                                class="form-label col-form-label col-sm-3">Email
+                                                                address</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="email"
+                                                                    class="form-control"
+                                                                    name="email"
+                                                                    t-attf-value="{{user.login}}"
+                                                                    placeholder="Your email address ..." />
+
+                                                                <small class="form-text text-muted">Note
+                                                                    that if you change your email,
+                                                                    you
+                                                                    will have to confirm it again.</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="page-section" id="section_edit_Password"
+                                                style="display: none;">
+                                                <h4>Change Password</h4>
+                                                <div class="list-group list-group-form">
+                                                    <div class="list-group-item">
+                                                        <div
+                                                            class="form-group row align-items-center mb-0">
+                                                            <label
+                                                                class="form-label col-form-label col-sm-3">New
+                                                                password</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text"
+                                                                    id="password"
+                                                                    class="form-control"
+                                                                    name="password"
+                                                                    placeholder="Password...." />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="list-group-item">
+                                                        <div
+                                                            class="form-group row align-items-center mb-0">
+                                                            <label
+                                                                class="form-label col-form-label col-sm-3">Confirm
+                                                                password</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="text"
+                                                                    oninput="checkPasswords()"
+                                                                    id="confirm_password"
+                                                                    class="form-control"
+                                                                    placeholder="Confirm password..." />
+                                                                <div id="passwordMatch"
+                                                                    class="invalid-feedback"
+                                                                    style="display: none;">
+                                                                    Passwords do not match
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="page-section" id="section_edit_parametre"
+                                                style="display: none;">
+                                                <h4>Paramètre</h4>
+                                                <div class="list-group list-group-form">
+                                                    <div class="list-group-item">
+                                                        <div
+                                                            class="form-group row align-items-center mb-0">
+                                                            <label
+                                                                class="form-label col-form-label col-sm-3">
+                                                                Température</label>
+                                                            <div class="col-sm-9">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label
+                                                                            class="form-label col-form-label col-sm-12">
+                                                                            max</label>
+                                                                        <input type="number"
+                                                                            class="form-control"
+                                                                            name="T_max"
+                                                                            t-attf-value="{{user.T_max}}"
+                                                                            placeholder="Max ..." />
+
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label
+                                                                            class="form-label col-form-label col-sm-12">
+                                                                            min</label>
+                                                                        <input type="number"
+                                                                            class="form-control"
+                                                                            name="T_min"
+                                                                            t-attf-value="{{user.T_min}}"
+                                                                            placeholder="Min ..." />
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="list-group-item">
+                                                        <div
+                                                            class="form-group row align-items-center mb-0">
+                                                            <label
+                                                                class="form-label col-form-label col-sm-3">
+                                                                Humidité</label>
+                                                            <div class="col-sm-9">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label
+                                                                            class="form-label col-form-label col-sm-12">
+                                                                            max</label>
+                                                                        <input type="number"
+                                                                            class="form-control"
+                                                                            name="H_max"
+                                                                            t-attf-value="{{user.H_max}}"
+                                                                            placeholder="Max ..." />
+
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label
+                                                                            class="form-label col-form-label col-sm-12">
+                                                                            min</label>
+                                                                        <input type="number"
+                                                                            class="form-control"
+                                                                            name="H_min"
+                                                                            t-attf-value="{{user.H_min}}"
+                                                                            placeholder="Min ..." />
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Ajoutez des entrées pour le pH et la
+                                                    salinité
+                                                de la même manière -->
+                                                    <div class="list-group-item">
+                                                        <div
+                                                            class="form-group row align-items-center mb-0">
+                                                            <label
+                                                                class="form-label col-form-label col-sm-3">
+                                                                PH</label>
+                                                            <div class="col-sm-9">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label
+                                                                            class="form-label col-form-label col-sm-12">
+                                                                            max</label>
+                                                                        <input type="number"
+                                                                            class="form-control"
+                                                                            name="PH_max"
+                                                                            t-attf-value="{{user.PH_max}}"
+                                                                            placeholder="Max ..." />
+
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label
+                                                                            class="form-label col-form-label col-sm-12">
+                                                                            min</label>
+                                                                        <input type="number"
+                                                                            class="form-control"
+                                                                            name="PH_min"
+                                                                            t-attf-value="{{user.PH_min}}"
+                                                                            placeholder="Min ..." />
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="list-group-item">
+                                                        <div
+                                                            class="form-group row align-items-center mb-0">
+                                                            <label
+                                                                class="form-label col-form-label col-sm-3">
+                                                                Salinité</label>
+                                                            <div class="col-sm-9">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label
+                                                                            class="form-label col-form-label col-sm-12">
+                                                                            max</label>
+                                                                        <input type="number"
+                                                                            class="form-control"
+                                                                            name="S_max"
+                                                                            t-attf-value="{{user.S_max}}"
+                                                                            placeholder="Max ..." />
+
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label
+                                                                            class="form-label col-form-label col-sm-12">
+                                                                            min</label>
+                                                                        <input type="number"
+                                                                            class="form-control"
+                                                                            name="S_min"
+                                                                            t-attf-value="{{user.S_min}}"
+                                                                            placeholder="Min ..." />
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-3 page-nav">
+                                            <div class="page-section pt-lg-112pt">
+                                                <nav class="nav page-nav__menu">
+                                                    <a class="nav-link active" id="info">Basic
+                                                        Information</a>
+                                                    <a class="nav-link" id="Password">Change
+                                                        Password</a>
+                                                    <a class="nav-link" id="parametre">Paramétre</a>
+                                                </nav>
+                                                <div class="page-nav__content">
+                                                    <button type="submit"
+                                                        class="btn btn-accent-dodger-blue">Save
+                                                        changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- // chars cestion -->
+
+                            <div style="margin-top: 31px; margin-left: 10px; margin-right: 20px;">
+                            
+                                <!-- Onglets Bootstrap -->
+                                <ul class="nav nav-tabs" id="myTabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="tab1" data-toggle="tab"
+                                            href="#section1">Profondeur 1</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="tab2" data-toggle="tab"
+                                            href="#section2">Profondeur 2</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="tab3" data-toggle="tab"
+                                            href="#section3">Profondeur 3</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="tab4" data-toggle="tab"
+                                            href="#section4">Profondeur 4</a>
+                                    </li>
+                                </ul>
+
+                                <!-- Contenu des onglets -->
+                                <div class="tab-content ">
+                                    <div class="tab-pane fade show active" id="section1">
+                                        <div class="" id="chars1"> </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="section2">
+                                        <div class="" id="chars2"></div>
+                                    </div>
+                                    <div class="tab-pane fade" id="section3">
+                                        <div class="" id="chars3"></div>
+                                    </div>
+                                    <div class="tab-pane fade" id="section4">
+                                        <div class="" id="chars4"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- // END body contente -->
+                        <!-- // footer contente -->
+                        <div class="js-fix-footer footer border-top-2 " id="footer"
+                            style="display: none;">
+
+                            <div class="  bg-primary-pickled-bluewood"
+                                style="padding-bottom: 0px;
+                                                                              background-color: #303840!important;">
+                                <div class="container-fluid page__container">
+                                    <div
+                                        class="rounded page-section py-lg-32pt px-16pt px-lg-24pt bg-primary-pickled-bluewood"
+                                        style="background-color: #303840!important;">
+                                        <div class="row">
+                                            <div class="col-md-2 col-sm-4 mb-24pt mb-md-0">
+                                                <p class="text-white-70 mb-8pt">
+                                                    <strong>Follow us</strong>
+                                                </p>
+                                                <nav class="nav nav-links nav--flush">
+                                                    <a href="#" class="nav-link mr-8pt">
+                                                        <img
+                                                            src="/WSC/static/icon/footer/facebook.png"
+                                                            width="24" height="24" alt="Facebook"
+                                                            loading="lazy" />
+                                                    </a>
+                                                    <a href="#" class="nav-link mr-8pt">
+                                                        <img
+                                                            src="/WSC/static/icon/footer/twitter.png"
+                                                            width="24" height="24" alt="Twitter"
+                                                            loading="lazy" />
+                                                    </a>
+                                                </nav>
+                                            </div>
+                                            <div
+                                                class="col-md-6 col-sm-4 mb-24pt mb-md-0 d-flex align-items-center">
+
+
+                                            </div>
+                                            <div class="col-md-4 text-md-right">
+                                                <br />
+                                                <p class="text-white-50 small mb-0">Copyright 2023 ©
+                                                    All rights reserved.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // End footer contente -->
+                    </div>
+                    <!-- drawer -->
+                    <div class="mdk-drawer js-mdk-drawer"
+                        id="default-drawer">
+                        <div class="mdk-drawer__content">
+                            <div class="sidebar sidebar-dark sidebar-left"
+                                data-perfect-scrollbar="true"
+                            >
+
+                                <a href="/"
+                                    class="sidebar-brand ">
+                                    <img style="width: 40%; height: 70%;"
+                                        src="/WSC/static/description/logo.png"
+                                        alt="LOGO" loading="lazy"></img>
+                                    <span style="color: #abc850;"> IRRIGATION</span>
+                                </a>
+
+                                <div class="sidebar-account mx-16pt mb-16pt dropdown">
+                                    <a href="#"
+                                        class="nav-link d-flex align-items-center dropdown-toggle"
+                                        data-toggle="dropdown"
+                                        data-caret="false">
+                                        <img height="32" width="32" class="rounded-circle mr-8pt"
+                                            t-attf-src="/web/image?model=res.users&amp;id={{ user.id }}&amp;field=avatar_128&amp;"
+                                            t-attf-alt="Photo de {{ user.name }}" />
+                                        <span class="flex d-flex flex-column mr-8pt">
+                                            <span class="text-black-100">
+                                                <t t-esc="user.name" />
+                                            </span>
+                                        </span>
+                                        <i class="material-icons text-black-20 icon-16pt">
+                                            keyboard_arrow_down</i>
+                                    </a>
+                                    <div
+                                        class="dropdown-menu dropdown-menu-full dropdown-menu-caret-center">
+                                        <div class="dropdown-header">
+                                            <strong>Account</strong>
+                                        </div>
+                                        <a class="dropdown-item"
+                                            id="edithref">Edit Account</a>
+                                        <a class="dropdown-item"
+                                            href="/web/session/logout">Logout</a>
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="sidebar-heading">Farmers</div>
+
+                                <ul class="sidebar-menu" id="farms">
+                                    <li class="sidebar-menu-item">
+                                        <a class="sidebar-menu-button js-sidebar-collapse"
+                                            data-toggle="collapse">
+                                            <span
+                                                class="material-icons sidebar-menu-icon sidebar-menu-icon--left">
+                                            donut_large</span> Farms <span
+                                                class="ml-auto sidebar-menu-toggle-icon"></span>
+                                        </a>
+
+                                        <t t-foreach="result" t-as="farm_info">
+                                            <ul class="sidebar-submenu collapse sm-indent"
+                                                t-attf-data-farm-id="{{ farm_info['farm_id'] }}">
+                                                <li class="sidebar-menu-item"
+                                                >
+                                                    <span class="sidebar-menu-button">
+                                                        <span class="sidebar-menu-text">
+                                                            <t t-esc="farm_info['farm_label']" />
+                                                        </span>
+
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </t>
+                                    </li>
+                                </ul>
+
+
+                                <ul class="sidebar-menu" id="zones">
+
+                                </ul>
+
+
+                                <ul class="sidebar-menu" id="select">
+                                    <li class="sidebar-menu-item">
+                                        <a class="sidebar-menu-button js-sidebar-collapse"
+                                            data-toggle="collapse">
+                                            <span
+                                                class="material-icons sidebar-menu-icon sidebar-menu-icon--left">
+                                            donut_large</span> Select <span
+                                                class="ml-auto sidebar-menu-toggle-icon"></span>
+                                        </a>
+
+
+                                        <ul class="sidebar-submenu collapse sm-indent"
+                                            t-attf-data-select-id="1">
+                                            <li class="sidebar-menu-item"
+                                            >
+                                                <span class="sidebar-menu-button">
+                                                    <span class="sidebar-menu-text">
+                                                        Par heur
+                                                    </span>
+
+                                                </span>
+                                            </li>
+                                        </ul>
+                                        <ul class="sidebar-submenu collapse sm-indent"
+                                            t-attf-data-select-id="2">
+                                            <li class="sidebar-menu-item"
+                                            >
+                                                <span class="sidebar-menu-button">
+                                                    <span class="sidebar-menu-text">
+                                                        Par jour
+                                                    </span>
+
+                                                </span>
+                                            </li>
+                                        </ul>
+                                        <ul class="sidebar-submenu collapse sm-indent"
+                                            t-attf-data-select-id="3">
+                                            <li class="sidebar-menu-item"
+                                            >
+                                                <span class="sidebar-menu-button">
+                                                    <span class="sidebar-menu-text">
+                                                        mois
+                                                    </span>
+
+                                                </span>
+                                            </li>
+                                        </ul>
+
+                                    </li>
+                                </ul>
+                                <div class="form-group"
+                                    style="padding-left: 20px;padding-right: 29px;">
+                                    <label for="dateInput">Sélectionnez une date :</label>
+                                    <input type="date" id="dateInput" class="form-control"
+                                        onchange="changedata()" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // END drawer -->
+                </div>
+
+
+                <!-- // END drawer-layout -->
+
+
+                <script type="text/javascript"> $(window).on('load', function() { var alerdedit =
+                    document.getElementById('alerdedit'); alerdedit.style.display = 'none';
+                    handleFarmClick(<t
+                        t-esc="first_farm_id" />, '<t t-esc="first_farm_label" />'); });
+                    document.getElementById('dateInput').max = new
+                    Date().toISOString().split('T')[0]; </script>
+                
+            </body>
+
+        </html>
+    </template>
+</odoo>

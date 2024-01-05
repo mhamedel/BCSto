@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_sensors_tree" model="ir.ui.view">
+        <field name="name">sensor.tree</field>
+        <field name="model">res.sensor</field>
+        <field name="arch" type="xml">
+           <!-- Liste des Capteurs -->
+           <tree>
+            <field name="name"/>        <!-- Type du capture "Selection"-->
+            <field name="zone_name"/>   <!-- Nome de la zone "compute"-->
+            <field name="farm_name"/>   <!-- Nome du farm "compute"-->
+            <field name="DID"/>       <!-- ID du capture-->
+        </tree>
+        </field>
+    </record>
+    <record id="view_sensors_form" model="ir.ui.view">
+        <field name="name">sensor.form</field>
+        <field name="model">res.sensor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                <group>
+                    <field name="zone" options="{'no_create': True, 'no_create_edit':True}"/>        <!-- Nome de la zone "Selection"-->
+                    <field name="name"/>        <!-- Type du capture "Selection"-->
+                    <field name="DID"/>       <!-- ID du capture "-->  
+                    <field name="zone_name"/>   <!-- Nome de la zone "compute"-->
+                    <field name="farm_name"/>   <!-- Nome du farm "compute"-->
+                           
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="menu_action_sensors" model="ir.actions.act_window">
+        <field name="name">Sensors </field>
+        <field name="res_model">res.sensor</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="view_sensors_tree"/>
+    </record>
+    
+
+
+
+    <menuitem id="menu_sensor"
+    name="Sensors"
+    parent="menu_bcs_root"
+    action="menu_action_sensors"
+    />
+
+</odoo>

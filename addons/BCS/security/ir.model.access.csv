@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.res.users,access_res_users,BCS.model_res_users,base.group_user,1,1,1,1
+access.res.farm,access_res_farm,BCS.model_res_farm,base.group_user,1,1,1,1
+access.res.zone,access_res_zone,BCS.model_res_zone,base.group_user,1,1,1,1
+access.res.sensor,access_res_sensor,BCS.model_res_sensor,base.group_user,1,1,1,1
+access.res.data,access_res_data,BCS.model_res_data,base.group_user,1,1,1,1

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+<template id="sensor_data_page" name="Sensor Data Page">
+    <t t-call="website.layout">
+        <t t-set="title">Sensor Data Page</t>
+        <div class="container">
+            
+            
+            <h1>Farms</h1>
+          
+
+            <br/>
+            <br/>
+            <br/>
+            <div id="divSelect">
+            </div>
+           
+
+            <!-- <button onclick="redirectToSelectedFarm()">Go to Farm</button> -->
+        </div>
+
+    </t>
+</template>
+
+
+</odoo>

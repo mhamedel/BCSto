@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_data_tree" model="ir.ui.view">
+        <field name="name">data.tree</field>
+        <field name="model">res.data</field>
+        <field name="arch" type="xml">
+           <!-- Liste des données -->
+           <tree create="false" edit="false" >
+            <field name="sensor"/>
+            <field name="DID"/>
+            <field name="CHAN" />
+            <field name="create_date"  string="Date"/>
+
+            <field name="PID" optional="hide"/>
+            <field name="auth" optional="hide"/>
+            <field name="IMEI" optional="hide"/>
+            
+            <field name="MDR1"/>
+            <field name="MDS1" optional="hide"/>
+            <field name="MDT1" optional="hide"/>
+            
+            <field name="MDR2"/>
+            <field name="MDS2" optional="hide"/>
+            <field name="MDT2" optional="hide"/>
+
+            <field name="MDR3"/>
+            <field name="MDS3" optional="hide"/>
+            <field name="MDT3" optional="hide"/>
+        
+            <field name="MDR4"/>
+            <field name="MDS4" optional="hide"/>
+            <field name="MDT4" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_data_form" model="ir.ui.view">
+        <field name="name">data.form</field>
+        <field name="model">res.data</field>
+        <field name="arch" type="xml">
+            <form >
+                <sheet>
+                <group>
+                    <field name="sensor"/>
+                    <field name="DID"/>
+                    <field name="CHAN"/>
+                    <field name="create_date" string="Date"/>
+
+                    <field name="auth"/>
+                    <field name="IMEI"/>
+                    <field name="PID"/>  
+
+                    <field name="MDR1"/>
+                    <field name="MDS1"/>
+                    <field name="MDT1"/>
+                    
+                    <field name="MDR2"/>
+                    <field name="MDS2"/>
+                    <field name="MDT2"/>
+        
+                    <field name="MDR3"/>
+                    <field name="MDS3"/>
+                    <field name="MDT3"/>
+                
+                    <field name="MDR4"/>
+                    <field name="MDS4"/>
+                    <field name="MDT4"/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="menu_action_data" model="ir.actions.act_window">
+        <field name="name">Donnes </field>
+        <field name="res_model">res.data</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="view_data_tree"/>
+    </record>
+    
+
+
+    <menuitem id="menu_data"
+    name="Données"
+    parent="menu_bcs_root"
+    action="menu_action_data"
+    />
+
+    <record id="menu_action_website" model="ir.actions.server">
+        <field name="name">web Site </field>
+        <field name="model_id"  ref="BCS.model_res_data"/>
+        <field name="state">code</field>
+        <field name="code"> action= model.action_website()</field>
+    </record>
+
+    <record id="menu_action_edit" model="ir.actions.server">
+        <field name="name">web Site edit </field>
+        <field name="model_id"  ref="BCS.model_res_data"/>
+        <field name="state">code</field>
+        <field name="code"> action= model.action_edit()</field>
+    </record>
+
+    <menuitem id="menu_websit"
+    name="Demo Web Site"
+    parent="menu_bcs_root"
+    action="menu_action_website"
+    />
+
+</odoo>

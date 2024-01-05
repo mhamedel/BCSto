@@ -1,0 +1,3 @@
+.o_navbar_apps_menu, #bottom, #mobile-menu, #new-content-menu,
+.o_MessagingMenu,.o_mail_systray_item{
+    display:none !important;}

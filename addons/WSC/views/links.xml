@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="layout" inherit_id="WSC.layouts" name="Welcome Message">
+        <xpath expr="//body" position="after">
+            <!-- jQuery -->
+            <script src="/WSC/static/assets/vendor/jquery.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <!-- Bootstrap -->
+            <script src="/WSC/static/assets/vendor/popper.min.js"></script>
+            <script src="/WSC/static/assets/vendor/bootstrap.min.js"></script>
+
+            <!-- Perfect Scrollbar -->
+            <script src="/WSC/static/assets/vendor/perfect-scrollbar.min.js"></script>
+
+            <!-- DOM Factory -->
+            <script src="/WSC/static/assets/vendor/dom-factory.js"></script>
+
+            <!-- MDK -->
+            <script src="/WSC/static/assets/vendor/material-design-kit.js"></script>
+
+            <!-- App JS -->
+            <script src="/WSC/static/assets/js/app.js"></script>
+           
+            <!-- Highlight.js -->
+            <script src="/WSC/static/assets/js/hljs.js"></script>
+
+            <!-- Global Settings -->
+            <script src="/WSC/static/assets/js/settings.js"></script>
+
+         
+
+            <!-- Moment.js -->
+            <script src="/WSC/static/assets/vendor/moment.min.js"></script>
+            <script src="/WSC/static/assets/vendor/moment-range.js"></script>
+
+            <!-- Chart.js -->
+            <!-- <script src="/WSC/static/assets/vendor/Chart.min.js"></script>
+            <script src="/WSC/static/assets/js/chartjs.js"></script> -->
+
+            <!-- Chart.js Samples -->
+            <!-- <script src="/WSC/static/assets/js/page.analytics-dashboard.js"></script> -->
+
+
+
+            <!-- List.js -->
+            <script src="/WSC/static/assets/vendor/list.min.js"></script>
+            <script src="/WSC/static/assets/js/list.js"></script>
+
+            <!-- Tables -->
+            <script src="/WSC/static/assets/js/toggle-check-all.js"></script>
+            <script src="/WSC/static/assets/js/check-selected-row.js"></script>
+
+            <!-- App Settings (safe to remove) -->
+            <script src="/WSC/static/assets/js/app-settings.js"></script>
+
+        </xpath>
+    </template>
+
+
+</odoo> 

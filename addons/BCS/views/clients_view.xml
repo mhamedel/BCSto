@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+    <record id="view_user_tree" model="ir.ui.view">
+        <field name="name">users.tree</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <tree string="Clients">
+                <field name="name" />
+                <field name="login" />
+                <field name="lang" />
+                <field name="login_date" />
+                <field name="company_id" groups="base.group_multi_company" />
+            </tree>
+        </field>
+    </record>
+   
+
+
+    <record id="view_user_form" model="ir.ui.view">
+        <field name="name">users.form</field>
+        <field name="model">res.users</field>
+        <field name="priority" eval="1"/>
+        <field name="arch" type="xml">
+            <form string="Users">
+                <style> .nav-tabs .nav-item a[href="#notebook_page_33"] {display: none !important;}</style>
+                <header>
+                </header>
+                <sheet>
+                    <field name="avatar_128" invisible="1" />
+                    <field name="image_1920" widget="image" class="oe_avatar"
+                        options="{&quot;preview_image&quot;: &quot;avatar_128&quot;}" />
+                    <div class="oe_title">
+                        <label for="name" />
+                        <h1>
+                            <field name="name" placeholder="e.g. John Doe" required="1" />
+                        </h1>
+                        <field name="email" invisible="1" />
+
+                        <label for="login" string="Email Address" />
+                        <h1>
+                            <field name="login" placeholder="e.g. email@yourcompany.com" />
+                        </h1>
+
+                        <label for="password" string="Password" />
+                        <h1>
+                            <field name="password" placeholder="*******"
+                                class="o_field_char o_field_widget o_quick_editable o_input o_required_modifier" />
+                        </h1>
+
+
+                        <footer>
+
+                        </footer>
+                    </div>
+                    <notebook colspan="4">
+                        
+                        <page string="Preferences" name="preferences">
+                            <group>
+                                <group string="Localization" name="preferences">
+                                    <field name="active" invisible="1"/>
+                                    <label for="lang"/>
+                                    <div class="o_row">
+                                        <field name="lang" required="1"/>
+                                    </div>
+                                    <field name="tz" widget="timezone_mismatch" options="{'tz_offset_field': 'tz_offset'}"/>
+                                    <field name="tz_offset" invisible="1"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Paramètre" name="parametre">
+                            <group>
+                                <group string="Max values"  > 
+                                    <field name="T_max" string="Temperature max" />
+                                    <field name="H_max" string="Humidité max" />
+                                    <field name="PH_max" string="PH max" />
+                                    <field name="S_max" string="salitym max" />
+                                </group> 
+                                <group string="Min values"> 
+                                    <field name="T_min" string="Temperature min" />
+                                    <field name="H_min" string="Humidité min" />
+                                    <field name="PH_min" string="PH min" />
+                                    <field name="S_min" string="salitym min " />
+                                </group>
+                            </group>
+
+                           
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="menu_action_clients" model="ir.actions.act_window">
+        <field name="name">Clients</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">form,tree,kanban</field>
+        <field name="domain">[('id','&gt;',7)]</field>
+        <field name="view_id" ref="view_user_tree" />
+    </record>
+
+    <menuitem id="menu_clients"
+        name="Clients"
+        parent="menu_bcs_root"
+        action="menu_action_clients"
+        sequence="0" />
+</odoo>
